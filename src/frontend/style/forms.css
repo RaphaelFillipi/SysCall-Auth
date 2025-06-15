@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
+
+span {
+  color: red;
+  font-size: 0.9rem;
+}
+
+input {
+  margin-top: 4px;
+  padding: 4px;
+}
