@@ -211,7 +211,7 @@ export const registerUserSchema = z.object({
       });
     }
 
-    // Validação da caracteres especiais
+    // Validação de caracteres especiais
     if (!/[^A-Za-z0-9]/.test(val)) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
