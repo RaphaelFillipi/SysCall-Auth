@@ -7,11 +7,12 @@ import { useForm } from "react-hook-form";
 import "../style/forms.css";
 import { FieldError } from "../components/Form/FieldError";
 import { normalizeEmail } from "../forms/registerUser/validations/normalizeEmail";
-import { normalizePhone } from "../forms/registerUser/validations/normalizePhone"
+import { normalizePhone } from "../forms/registerUser/validations/normalizePhone";
 import { registerUser } from "../forms/registerUser/services/registerUser";
+import { InputForms } from "../components/Form/Input/Input";
+import { StandardButton } from "../components/StandardButton";
 
 export function RegisterUser() {
-
   const {
     register,
     handleSubmit,
@@ -24,66 +25,75 @@ export function RegisterUser() {
   });
 
   // Submit do Formulário
-  const onSubmit = async (data: RegisterUserFormData) => { 
-
+  const onSubmit = async (data: RegisterUserFormData) => {
     //Tratativas dos dados a serem enviados ao banco
     const normalizedData = {
-    ...data,
-    telephone: normalizePhone(data.telephone),
-    email: normalizeEmail(data.email)
-  };
+      ...data,
+      telephone: normalizePhone(data.telephone),
+      email: normalizeEmail(data.email),
+    };
 
     console.log("Telefone:", normalizedData.telephone);
     console.log("E-mail:", normalizedData.email);
 
     // Cadastro do Usuário
-    await registerUser(normalizedData);
+    //await registerUser(normalizedData);
   };
 
   return (
-    <div>
-      <h1>Cadastro de Usuário</h1>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="p-4 flex justify-center w-full">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="p-11 text-sm md:text-2xl bg-green/light md:max-w-[591px] rounded-[12px] w-full h-full"
+      >
+        <h1>Cadastro de Usuário</h1>
         <div>
           <label>Nome:</label>
-          <input type="text" {...register("name")} />
+          <InputForms type="text" register={register} name="name" />
           <FieldError error={errors.name} />
         </div>
 
         <div>
           <label>Sobrenome:</label>
-          <input type="text" {...register("surname")} />
+          <InputForms type="text" register={register} name="surname" />
           <FieldError error={errors.surname} />
         </div>
 
         <div>
           <label>E-mail:</label>
-          <input type="text" inputMode="email" autoComplete="email" {...register("email")} />
+          <InputForms
+            type="text"
+            register={register}
+            name="email"
+            inputMode="email"
+            autoComplete="email"
+          />
           <FieldError error={errors.email} />
         </div>
-        
+
         <div>
           <label>Telefone:</label>
-          <input type="text" {...register("telephone")}/>
+          <InputForms type="text" register={register} name="telephone" />
           <FieldError error={errors.telephone} />
         </div>
 
         <div>
           <label>Senha:</label>
-          <input type="password" {...register("password")}/>
-          <FieldError error={errors.password} /> 
+          <InputForms type="password" register={register} name="password" />
+          <FieldError error={errors.password} />
         </div>
 
         <div>
           <label>Confirme a senha:</label>
-          <input type="password" {...register("confirmPassword")}/>
+          <InputForms
+            type="password"
+            register={register}
+            name="confirmPassword"
+          />
           <FieldError error={errors.confirmPassword} />
-        </div>  
-
-        <div>
-          <button>Enviar</button>
         </div>
+
+        <StandardButton title="Cadastrar" />
       </form>
     </div>
   );
