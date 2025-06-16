@@ -2,13 +2,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   registerUserSchema,
   RegisterUserFormData,
-} from "../forms/schemas/registerUser.schema";
+} from "../forms/registerUser/schemas/registerUser.schema";
 import { useForm } from "react-hook-form";
 import "../style/forms.css";
 import { FieldError } from "../components/Form/FieldError";
+import { normalizeEmail } from "../forms/registerUser/validations/normalizeEmail";
+import { normalizePhone } from "../forms/registerUser/validations/normalizePhone"
+import { registerUser } from "../forms/registerUser/services/registerUser";
 
 export function RegisterUser() {
-  // Validação do Zod
+
   const {
     register,
     handleSubmit,
@@ -21,10 +24,20 @@ export function RegisterUser() {
   });
 
   // Submit do Formulário
-  const onSubmit = (data: RegisterUserFormData) => { 
-    console.log("Nome:", data.name);
-    console.log("Sobrenome:", data.surname);
-    console.log("E-mail:", data.email);
+  const onSubmit = async (data: RegisterUserFormData) => { 
+
+    //Tratativas dos dados a serem enviados ao banco
+    const normalizedData = {
+    ...data,
+    telephone: normalizePhone(data.telephone),
+    email: normalizeEmail(data.email)
+  };
+
+    console.log("Telefone:", normalizedData.telephone);
+    console.log("E-mail:", normalizedData.email);
+
+    // Cadastro do Usuário
+    await registerUser(normalizedData);
   };
 
   return (
