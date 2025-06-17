@@ -24,9 +24,7 @@ export function RegisterUser() {
     criteriaMode: "all",
   });
 
-  // Submit do Formulário
   const onSubmit = async (data: RegisterUserFormData) => {
-    //Tratativas dos dados a serem enviados ao banco
     const normalizedData = {
       ...data,
       telephone: normalizePhone(data.telephone),
@@ -36,65 +34,63 @@ export function RegisterUser() {
     console.log("Telefone:", normalizedData.telephone);
     console.log("E-mail:", normalizedData.email);
 
-    // Cadastro do Usuário
     //await registerUser(normalizedData);
   };
 
   return (
-    <div className="p-4 flex justify-center w-full">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="p-11 text-sm md:text-2xl bg-green/light md:max-w-[591px] rounded-[12px] w-full h-full"
-      >
-        <h1>Cadastro de Usuário</h1>
-        <div>
-          <label>Nome:</label>
-          <InputForms type="text" register={register} name="name" />
-          <FieldError error={errors.name} />
-        </div>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="text-sm md:text-2xl w-full h-full px-8 space-y-4"
+    >
+      <div>
+        <label>Nome:</label>
+        <InputForms type="text" register={register} name="name" />
+        <FieldError error={errors.name} />
+      </div>
 
-        <div>
-          <label>Sobrenome:</label>
-          <InputForms type="text" register={register} name="surname" />
-          <FieldError error={errors.surname} />
-        </div>
+      <div>
+        <label>Sobrenome:</label>
+        <InputForms type="text" register={register} name="surname" />
+        <FieldError error={errors.surname} />
+      </div>
 
-        <div>
-          <label>E-mail:</label>
-          <InputForms
-            type="text"
-            register={register}
-            name="email"
-            inputMode="email"
-            autoComplete="email"
-          />
-          <FieldError error={errors.email} />
-        </div>
+      <div>
+        <label>E-mail:</label>
+        <InputForms
+          type="text"
+          register={register}
+          name="email"
+          inputMode="email"
+          autoComplete="email"
+        />
+        <FieldError error={errors.email} />
+      </div>
 
-        <div>
-          <label>Telefone:</label>
-          <InputForms type="text" register={register} name="telephone" />
-          <FieldError error={errors.telephone} />
-        </div>
+      <div>
+        <label>Telefone:</label>
+        <InputForms type="text" register={register} name="telephone" />
+        <FieldError error={errors.telephone} />
+      </div>
 
-        <div>
-          <label>Senha:</label>
-          <InputForms type="password" register={register} name="password" />
-          <FieldError error={errors.password} />
-        </div>
+      <div>
+        <label>Senha:</label>
+        <InputForms type="password" register={register} name="password" />
+        <FieldError error={errors.password} />
+      </div>
 
-        <div>
-          <label>Confirme a senha:</label>
-          <InputForms
-            type="password"
-            register={register}
-            name="confirmPassword"
-          />
-          <FieldError error={errors.confirmPassword} />
-        </div>
+      <div>
+        <label>Confirme a senha:</label>
+        <InputForms
+          type="password"
+          register={register}
+          name="confirmPassword"
+        />
+        <FieldError error={errors.confirmPassword} />
+      </div>
 
+      <div className="h-full pb-2">
         <StandardButton title="Cadastrar" />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
