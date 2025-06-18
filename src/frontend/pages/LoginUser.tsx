@@ -1,21 +1,15 @@
 import { useForm } from "react-hook-form";
 import { DataLogin } from "../types/login/DataLogin.type";
-import { auth } from "../forms/loginUser/authService/auth";
-import "../style/forms.css";
+import { useLoginSubmit } from "../hooks/useLoginSubmit";
 
 export function LoginUser() {
   const { register, handleSubmit } = useForm<DataLogin>();
 
-  const onSubmit = async (data: DataLogin) => {
-    console.log("E-mail: ", data.email);
-    console.log("Senha: ", data.password);
-
-    //await auth(data);
-  };
+  const { handleLogin } = useLoginSubmit();
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleLogin)}
       className="text-sm md:text-2xl w-full h-full px-8 space-y-4"
     >
       <div>

@@ -2,13 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   registerUserSchema,
   RegisterUserFormData,
-} from "../forms/registerUser/schemas/registerUser.schema";
+} from "../validations/schemas/registerUser.schema";
 import { useForm } from "react-hook-form";
 import "../style/forms.css";
 import { FieldError } from "../components/Form/FieldError";
-import { normalizeEmail } from "../forms/registerUser/validations/normalizeEmail";
-import { normalizePhone } from "../forms/registerUser/validations/normalizePhone";
-import { registerUser } from "../forms/registerUser/services/registerUser";
+import { normalizeEmail } from "../validations/forms/normalizeEmail";
+import { normalizePhone } from "../validations/forms/normalizePhone";
 import { InputForms } from "../components/Form/Input/Input";
 import { StandardButton } from "../components/StandardButton";
 
@@ -33,8 +32,6 @@ export function RegisterUser() {
 
     console.log("Telefone:", normalizedData.telephone);
     console.log("E-mail:", normalizedData.email);
-
-    //await registerUser(normalizedData);
   };
 
   return (
