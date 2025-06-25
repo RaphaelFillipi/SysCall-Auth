@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ButtonTitleAuth } from "../components/Form/ButtonTitle/ButtonTitleAuth";
 import { RegisterUser } from "./RegisterUser";
 import { LoginUser } from "./LoginUser";
-import logoVertical from "../img/logo-vertical.svg";
-import imgBg from "../img/image-bg.svg";
+import logoVertical from "../assets/logo-vertical.svg";
+import imgBg from "../assets/image-bg.svg";
 
 export function SwitchFormButton() {
   const [formState, setFormState] = useState(false);
