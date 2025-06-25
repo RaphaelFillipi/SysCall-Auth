@@ -4,9 +4,7 @@ module.exports = {
   transform: {
     "^.+\\.(j|t)sx?$": "babel-jest",
   },
-  transformIgnorePatterns: [
-    "/node_modules/(?!(@hookform|zod)/)",
-  ],
+  transformIgnorePatterns: ["/node_modules/(?!(@hookform|zod)/)"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js",

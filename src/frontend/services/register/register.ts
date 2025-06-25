@@ -19,11 +19,11 @@ export const registerUser = async (data: RegisterUserFormData) => {
     });
 
     if (signUpError) {
-      console.error("Erro no cadastro do usuário:", signUpError);
+      //console.error("Erro no cadastro do usuário:", signUpError);
       throw signUpError;
     }
   } catch (e) {
-    console.error("Não foi possível realizar tal operação: ", e);
+    //console.error("Não foi possível realizar tal operação: ", e);
     throw e;
   }
 };

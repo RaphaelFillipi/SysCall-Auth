@@ -1,8 +1,5 @@
-import { useNhostClient } from "@nhost/react";
+import { nhost } from "../../../lib/nhost/nhost";
 
 export const token = () => {
-    const nhost = useNhostClient();
-
-    return nhost.auth.getAccessToken();;
-}
-
+  return nhost.auth.getAccessToken();
+};
