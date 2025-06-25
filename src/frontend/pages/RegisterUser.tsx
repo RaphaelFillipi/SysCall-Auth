@@ -8,9 +8,10 @@ import "../style/forms.css";
 import { FieldError } from "../components/Form/FieldError";
 import { normalizeEmail } from "../validations/forms/normalizeEmail";
 import { normalizePhone } from "../validations/forms/normalizePhone";
-import { InputForms } from "../components/Form/Input/Input";
+import { InputForms } from "../components/Form/InputForms/InputForms";
 import { StandardButton } from "../components/StandardButton";
 import { Label } from "../components/Form/Label/Label";
+import { InputPassword } from "../components/Form/InputPassword/InputPassword";
 
 export function RegisterUser() {
   const {
@@ -73,17 +74,13 @@ export function RegisterUser() {
       <div className="space-y-6 flex flex-col md:space-y-0  md:flex-row md:space-x-2">
         <div className="md:w-1/2">
           <Label name="Senha:" />
-          <InputForms type="password" register={register} name="password" />
+          <InputPassword register={register} name="password" />
           <FieldError error={errors.password} />
         </div>
 
         <div className="md:w-1/2">
           <Label name="Confirmar Senha:" />
-          <InputForms
-            type="password"
-            register={register}
-            name="confirmPassword"
-          />
+          <InputPassword register={register} name="confirmPassword" />
           <FieldError error={errors.confirmPassword} />
         </div>
       </div>

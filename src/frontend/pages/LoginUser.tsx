@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useLoginSubmit } from "../hooks/useLoginSubmit";
-import { InputForms } from "../components/Form/Input/Input";
+import { InputForms } from "../components/Form/InputForms/InputForms";
 import { StandardButton } from "../components/StandardButton";
 import { Label } from "../components/Form/Label/Label";
+import { InputPassword } from "../components/Form/InputPassword/InputPassword";
 
 export function LoginUser() {
   const { register, handleSubmit } = useForm();
@@ -21,7 +22,7 @@ export function LoginUser() {
 
       <div>
         <Label name="Senha:" />
-        <InputForms type="password" register={register} name="password" />
+        <InputPassword register={register} name="password" />
       </div>
 
       <div className="h-full pb-2">
