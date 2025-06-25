@@ -10,6 +10,7 @@ import { normalizeEmail } from "../validations/forms/normalizeEmail";
 import { normalizePhone } from "../validations/forms/normalizePhone";
 import { InputForms } from "../components/Form/Input/Input";
 import { StandardButton } from "../components/StandardButton";
+import { Label } from "../components/Form/Label/Label";
 
 export function RegisterUser() {
   const {
@@ -30,29 +31,29 @@ export function RegisterUser() {
       email: normalizeEmail(data.email),
     };
 
-    console.log("Telefone:", normalizedData.telephone);
-    console.log("E-mail:", normalizedData.email);
+    // console.log("Telefone:", normalizedData.telephone);
+    // console.log("E-mail:", normalizedData.email);
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="text-sm md:text-2xl w-full h-full px-8 space-y-4"
+      className="text-sm w-full px-8 text-gray-dark space-y-2 lg:space-y-0.5"
     >
       <div>
-        <label>Nome:</label>
+        <Label name="Nome:" />
         <InputForms type="text" register={register} name="name" />
         <FieldError error={errors.name} />
       </div>
 
       <div>
-        <label>Sobrenome:</label>
+        <Label name="Sobrenome:" />
         <InputForms type="text" register={register} name="surname" />
         <FieldError error={errors.surname} />
       </div>
 
       <div>
-        <label>E-mail:</label>
+        <Label name="E-mail:" />
         <InputForms
           type="text"
           register={register}
@@ -64,25 +65,27 @@ export function RegisterUser() {
       </div>
 
       <div>
-        <label>Telefone:</label>
+        <Label name="Telefone:" />
         <InputForms type="text" register={register} name="telephone" />
         <FieldError error={errors.telephone} />
       </div>
 
-      <div>
-        <label>Senha:</label>
-        <InputForms type="password" register={register} name="password" />
-        <FieldError error={errors.password} />
-      </div>
+      <div className="space-y-6 flex flex-col md:space-y-0  md:flex-row md:space-x-2">
+        <div className="md:w-1/2">
+          <Label name="Senha:" />
+          <InputForms type="password" register={register} name="password" />
+          <FieldError error={errors.password} />
+        </div>
 
-      <div>
-        <label>Confirme a senha:</label>
-        <InputForms
-          type="password"
-          register={register}
-          name="confirmPassword"
-        />
-        <FieldError error={errors.confirmPassword} />
+        <div className="md:w-1/2">
+          <Label name="Confirmar Senha:" />
+          <InputForms
+            type="password"
+            register={register}
+            name="confirmPassword"
+          />
+          <FieldError error={errors.confirmPassword} />
+        </div>
       </div>
 
       <div className="h-full pb-2">
