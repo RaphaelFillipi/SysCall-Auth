@@ -5,7 +5,7 @@ export function InputForms({ register, name, ...rest }: InputProps) {
     <input
       {...rest}
       {...register(name)}
-      className="h-[32px] text-sm md:h-[40px] bg-white w-full rounded-[8px]"
+      className="h-[32px] w-full text-[16px] md:h-[35px] bg-white rounded-[12px] outline-none pl-3 lg:h-[32px]"
     />
   );
 }

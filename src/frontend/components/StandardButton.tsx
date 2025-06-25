@@ -1,7 +1,7 @@
 export function StandardButton({ title }) {
   return (
     <div>
-      <button className="h-[36px] md:h-[59px] w-full bg-green-dark rounded-[8px] text-white-primary font-bold">
+      <button className="p-2 w-full bg-green-dark rounded-[8px] text-white-primary font-bold text-base lg:text-[17px]">
         {title}
       </button>
     </div>
