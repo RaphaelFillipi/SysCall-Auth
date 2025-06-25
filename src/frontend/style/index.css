@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+}
+
 body {
   @apply font-sans;
 }
