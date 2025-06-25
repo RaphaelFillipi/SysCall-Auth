@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { isDevEnv } from "./env";
 
 export const log = (...args: unknown[]) => {
@@ -7,3 +8,5 @@ export const log = (...args: unknown[]) => {
 export const error = (...args: unknown[]) => {
   if (isDevEnv()) console.log(...args);
 };
+
+/* eslint-enable no-console */
