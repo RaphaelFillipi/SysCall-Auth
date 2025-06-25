@@ -2,11 +2,18 @@ import { useState } from "react";
 import { ButtonTitleAuth } from "../components/Form/ButtonTitle/ButtonTitleAuth";
 import { RegisterUser } from "./RegisterUser";
 import { LoginUser } from "./LoginUser";
+import { AnimatePresence, motion } from "framer-motion";
 import logoVertical from "../assets/logo-vertical.svg";
 import imgBg from "../assets/image-bg.svg";
 
 export function SwitchFormButton() {
   const [formState, setFormState] = useState(false);
+
+  const variants = {
+    initial: { opacity: 0, x: 50 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -50 },
+  };
 
   return (
     <div className="w-full min-h-screen flex flex-col md:flex-row">
@@ -37,7 +44,31 @@ export function SwitchFormButton() {
               className={"rounded-bl-lg"}
             />
           </div>
-          {formState === true ? <LoginUser /> : <RegisterUser />}
+          <AnimatePresence mode="wait">
+            {formState === true ? (
+              <motion.div
+                key="login"
+                variants={variants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.4 }}
+              >
+                <LoginUser />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="register"
+                variants={variants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.4 }}
+              >
+                <RegisterUser />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       <div className="lg:w-1/2 lg:flex lg:items-start lg:justify-center lg:max-h-screen lg:px-10 lg:pt-[35px] xl:items-center xl:pt-[0px]">
