@@ -5,11 +5,14 @@ import { LoginUser } from "./LoginUser";
 import { AnimatePresence, motion } from "framer-motion";
 import logoVertical from "../assets/logo-vertical.svg";
 import imgBg from "../assets/image-bg.svg";
+import { Variants } from "framer-motion";
 
 export function SwitchFormButton() {
-  const [formState, setFormState] = useState(false);
+  const [formState, setFormState] = useState<boolean>(false);
 
-  const variants = {
+
+  //Propriedades de animação
+  const animationVariants: Variants = {
     initial: { opacity: 0, x: 50 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -50 },
@@ -25,7 +28,7 @@ export function SwitchFormButton() {
         />
       </div>
       <div className="flex px-8 pb-4 justify-center items-center flex-grow lg:justify-start md:p-4 2xl:justify-center">
-        <div className="bg-green-light w-full sm:max-w-[480px] md:max-w-[400px] lg:max-w-[360px] xl:max-w-[400px] rounded-[12px]">
+        <div className="bg-green-light rounded-[12px] w-full sm:max-w-[480px] md:max-w-[400px] lg:max-w-[360px] xl:max-w-[400px]">
           <div className="flex flex-row w-full pb-8 rounded-[12px] overflow-hidden lg:pb-4">
             <ButtonTitleAuth
               title="Cadastro"
@@ -48,7 +51,7 @@ export function SwitchFormButton() {
             {formState === true ? (
               <motion.div
                 key="login"
-                variants={variants}
+                variants={animationVariants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
@@ -59,7 +62,7 @@ export function SwitchFormButton() {
             ) : (
               <motion.div
                 key="register"
-                variants={variants}
+                variants={animationVariants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
