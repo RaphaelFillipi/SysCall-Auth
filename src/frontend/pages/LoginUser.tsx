@@ -13,7 +13,7 @@ export function LoginUser() {
   return (
     <form
       onSubmit={handleSubmit(handleLogin)}
-      className="w-full px-8 space-y-2 text-gray-dark"
+      className="w-full px-8 space-y-6 text-gray-dark"
     >
       <div>
         <Label name="E-mail:" />

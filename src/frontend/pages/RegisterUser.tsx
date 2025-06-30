@@ -4,7 +4,6 @@ import {
   RegisterUserFormData,
 } from "../validations/schemas/registerUser.schema";
 import { useForm } from "react-hook-form";
-import "../style/forms.css";
 import { FieldError } from "../components/Form/FieldError";
 import { normalizeEmail } from "../validations/forms/normalizeEmail";
 import { normalizePhone } from "../validations/forms/normalizePhone";
@@ -39,7 +38,7 @@ export function RegisterUser() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="text-sm w-full px-8 text-gray-dark space-y-2 lg:space-y-0.5"
+      className="text-sm w-full px-8 text-gray-dark space-y-6"
     >
       <div>
         <Label name="Nome:" />
