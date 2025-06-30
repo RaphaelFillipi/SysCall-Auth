@@ -16,6 +16,7 @@ export function InputPassword({ register, name, ...rest }: InputProps) {
         register={register}
         name={name}
         {...rest}
+        className="pr-[41px]"
       />
       <button
         className="absolute right-3 top-0 bottom-0"
@@ -24,7 +25,7 @@ export function InputPassword({ register, name, ...rest }: InputProps) {
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? (
-          <img src={EyeOpen} alt="Olho aberto" />
+          <img src={EyeOpen} alt="Olho aberto" className="w-[19px] h-19[px]" />
         ) : (
           <img src={EyeClose} alt="Olho fechado" />
         )}
