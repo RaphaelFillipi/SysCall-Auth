@@ -2,14 +2,12 @@ import { useState } from "react";
 import { ButtonTitleAuth } from "../components/Form/ButtonTitle/ButtonTitleAuth";
 import { RegisterUser } from "./RegisterUser";
 import { LoginUser } from "./LoginUser";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import logoVertical from "../assets/logo-vertical.svg";
 import imgBg from "../assets/image-bg.svg";
-import { Variants } from "framer-motion";
 
 export function SwitchFormButton() {
   const [formState, setFormState] = useState<boolean>(false);
-
 
   //Propriedades de animação
   const animationVariants: Variants = {
