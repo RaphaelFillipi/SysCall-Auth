@@ -1,7 +1,7 @@
 {
   "name": "@mfe/auth",
   "scripts": {
-    "start": "webpack serve --port 8080",
+    "start": "webpack serve --port 8001",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",
