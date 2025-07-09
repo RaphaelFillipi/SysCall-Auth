@@ -1,6 +1,11 @@
+import { region, subdomain } from "../../frontend/utils/env";
 import { NhostClient } from "@nhost/react";
 
-export const nhost = new NhostClient({
-  subdomain: "sskqrcxhoncbtbqmcxvr",
-  region: "sa-east-1",
+const nhost = new NhostClient({
+  subdomain: subdomain,
+  region: region,
 });
+
+const nhostConfig = { subdomain, region };
+
+export { nhost, nhostConfig };
