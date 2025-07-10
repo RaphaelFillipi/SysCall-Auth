@@ -1,44 +1,41 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  registerUserSchema,
-  RegisterUserFormData,
-} from "../validations/schemas/registerUser.schema";
+  userRegisterSchema,
+  UserRegisterFormData,
+} from "../validations/zod/schema/userRegister.schema";
 import { useForm } from "react-hook-form";
 import { FieldError } from "../components/Form/FieldError";
-import { normalizeEmail } from "../validations/forms/normalizeEmail";
-import { normalizePhone } from "../validations/forms/normalizePhone";
 import { InputForms } from "../components/Form/InputForms/InputForms";
 import { StandardButton } from "../components/StandardButton";
 import { Label } from "../components/Form/Label/Label";
 import { InputPassword } from "../components/Form/InputPassword/InputPassword";
+import { normalizePhone } from "../validations/forms/normalizePhone";
+import { normalizeEmail } from "../validations/forms/normalizeEmail";
 
-export function RegisterUser() {
+export function UserRegister() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterUserFormData>({
-    resolver: zodResolver(registerUserSchema),
+  } = useForm<UserRegisterFormData>({
+    resolver: zodResolver(userRegisterSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     criteriaMode: "all",
   });
 
-  const onSubmit = async (data: RegisterUserFormData) => {
+  const onSubmit = (data: UserRegisterFormData) => {
     const normalizedData = {
       ...data,
       telephone: normalizePhone(data.telephone),
       email: normalizeEmail(data.email),
     };
-
-    // console.log("Telefone:", normalizedData.telephone);
-    // console.log("E-mail:", normalizedData.email);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
       className="text-sm w-full px-8 text-gray-dark space-y-6"
+      onSubmit={handleSubmit(onSubmit)}
     >
       <div>
         <Label name="Nome:" />

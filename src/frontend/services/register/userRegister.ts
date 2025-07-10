@@ -1,7 +1,7 @@
-import { RegisterUserFormData } from "../../validations/schemas/registerUser.schema";
+import { UserRegisterProps } from "@/frontend/types/register/UserRegisterProps.type";
 import { nhost } from "@/lib/nhost/nhost";
 
-export const registerUser = async (data: RegisterUserFormData) => {
+export const userRegister = async (data: UserRegisterProps) => {
   const { name, surname, email, telephone, password } = data;
 
   try {
@@ -22,8 +22,5 @@ export const registerUser = async (data: RegisterUserFormData) => {
       //console.error("Erro no cadastro do usuário:", signUpError);
       throw signUpError;
     }
-  } catch (e) {
-    //console.error("Não foi possível realizar tal operação: ", e);
-    throw e;
-  }
+  } catch (e) {}
 };

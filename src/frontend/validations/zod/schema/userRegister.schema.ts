@@ -10,7 +10,7 @@ import {
   UPPERCASE_REGEX,
 } from "../../../utils/regex";
 
-export const registerUserSchema = z
+export const userRegisterSchema = z
   .object({
     // Validações do campo name
     name: z
@@ -80,4 +80,4 @@ export const registerUserSchema = z
     path: ["surname"],
   });
 
-export type RegisterUserFormData = z.infer<typeof registerUserSchema>;
+export type UserRegisterFormData = z.infer<typeof userRegisterSchema>;
