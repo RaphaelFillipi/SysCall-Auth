@@ -7,14 +7,7 @@ export const FieldError: React.FC<FieldErrorProps> = ({ error }) => {
   const messages = error.types ? Object.values(error.types) : [error.message];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        marginTop: "4px",
-        whiteSpace: "pre-line",
-      }}
-    >
+    <div>
       {messages.map((msg, idx) => (
         <span key={idx}>{msg}</span>
       ))}
