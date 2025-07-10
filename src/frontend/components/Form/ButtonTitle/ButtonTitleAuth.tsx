@@ -5,6 +5,7 @@ export function ButtonTitleAuth({ title, active, className, ...rest }) {
         className={`text-[22px] p-2 w-full transition-colors duration-200 font-bold ${className} md:text-[24px]  ${
           active ? "bg-transparent" : "bg-gray-light"
         }`}
+        type="submit"
         {...rest}
       >
         {title}
